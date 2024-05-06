@@ -598,7 +598,7 @@ def userrating(request,mid):
     
     counts=0
     counts=stardata=tbl_rating.objects.filter(user=cart.touser_id_id).count()
-    # print(cart.product_id)
+   
     if counts>0:
         res=0
         stardata=tbl_rating.objects.filter(user=wdata).order_by('-datetime')

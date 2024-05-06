@@ -1,0 +1,49 @@
+{% extends 'Publisher/Header.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+</head>
+
+
+<body>
+    <div class="container-fluid d-bg-image">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="d-profile">
+                <table class="table table-striped d-card" style="color: black;" align="center" cellpadding="10px">
+                    <tr> 
+                        <td>Name</td>
+                        <td><input type="text" class="form-control" name="txtname" id="" value="{{prodata.publisher_name}}" title="Name Allows Only Alphabets,Spaces and First Letter Must Be Capital Letter" pattern="^[A-Z]+[a-zA-Z ]*$"/></td>
+                    </tr>
+                    <tr>
+                        <td>Contact</td>
+                        <td><input type="text" name="txtcon" class="form-control" id="" value="{{prodata.publisher_contact}}" pattern="[7-9]{1}[0-9]{9}" 
+                            title="Phone number with 7-9 and remaing 9 digit with 0-9"/></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="email" name="txtemail" class="form-control" id="" value="{{prodata.publisher_email}}"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center"><input class="btn btn-primary" type="submit" value="Update" name="btnsub"></td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+    {% if msg %}
+    <script>
+        alert("{{msg}}")
+        window.location = "{% url 'Publisher:my_pro' %}"
+    </script>
+    {% endif %}
+</body>
+</html>
+{% endblock content %}

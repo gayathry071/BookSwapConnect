@@ -1,0 +1,45 @@
+{% extends 'Agent/Header.html' %}
+{% load static %}
+{% block content %}
+
+{% load mathfilters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>User</th>
+                    <th>Address</th>
+                    <th>Cart Quantity</th>
+                    <th>Product</th>
+                    <th>Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.product.publisher.publisher_name}}</td>
+                    <td>{{i.product.publisher.publisher_address}}</td>
+                    <td>{{i.cart_qty}}</td>
+                    <td>{{i.product.pbook_name}}</td>
+                    <td>{{i.cart_qty|mul:i.product.pbook_price}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock content %}
